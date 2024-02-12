@@ -6,13 +6,6 @@ function ConvertImageToBase64 {
     $image = [System.IO.File]::ReadAllBytes($imagePath)
     $base64 = [System.Convert]::ToBase64String($image)
 
-    # make sure base64 is a multiple of 4 for valid encoding
-    $padding = 0
-    if ($base64.Length % 4 -ne 0) {
-        $padding = 4 - ($base64.Length % 4)
-    }
-    $base64 += [System.String]::new('=', $padding)
-
     return $base64
 }
 
