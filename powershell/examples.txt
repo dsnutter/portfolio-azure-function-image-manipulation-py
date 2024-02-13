@@ -1,0 +1,5 @@
+cd powershell
+
+.\convert-image-base64-from.ps1 1.scaled.jpg.base64.txt
+
+.\convert-image-base64-to.ps1 1.jpg

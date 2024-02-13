@@ -11,10 +11,11 @@ function ConvertImageToBase64 {
 
 function ConvertBase64ToImage {
     param(
-        [string]$base64,
+        [string]$base64File,
         [string]$outputPath
     )
 
+    $base64 = Get-Content $base64File
     $image = [System.Convert]::FromBase64String($base64)
     [System.IO.File]::WriteAllBytes($outputPath, $image)
 }
