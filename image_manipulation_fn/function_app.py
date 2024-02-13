@@ -1,6 +1,7 @@
 import azure.functions as func
 import logging
 from PIL import Image
+# from PIL.ExifTags import TAGS
 import json
 from io import BytesIO
 import base64
