@@ -4,7 +4,6 @@ from PIL import Image
 import json
 from io import BytesIO
 import base64
-import math
 from helper_functions import return_error, process_image
 from constants import CONTENT_TYPES_VALID, IMAGE_TYPES_VALID
 
@@ -15,7 +14,7 @@ def dimensions(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Processing HTTP Triggered request for returning image dimensions.')
 
     # process image file sent in the request
-    img = process_image(req)
+    img, type_request, type_image  = process_image(req)
     if type(img) == func.HttpResponse:
         return img
 
@@ -46,7 +45,7 @@ def scale(req: func.HttpRequest) -> func.HttpResponse:
             scale = int(temp)
         # scale down
         if scale < 0:
-            img_scaled = img.resize((img.width // math.abs(scale) , img.height // math.abs(scale)))
+            img_scaled = img.resize((img.width // abs(scale) , img.height // abs(scale)))
         # scale up
         elif scale > 0:
             img_scaled = img.resize((img.width * scale, img.height * scale))

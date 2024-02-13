@@ -62,4 +62,4 @@ def process_image(req, content_type='application/json'):
     else:
         return img, type_request, type_image
 
-    return return_error(msg, status)
+    return return_error(msg, status), type_request, type_image
