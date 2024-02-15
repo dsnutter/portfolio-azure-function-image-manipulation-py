@@ -20,8 +20,8 @@ $imageName = $args[0]
 $scriptPath = Split-Path -parent $MyInvocation.MyCommand.Definition
 
 # paths
-$imagePath = $scriptPath + '/../images/originals/' + $imageName
-$outputPath = $scriptPath + '/../images/base64/' + $imageName + '.base64.txt'
+$imagePath = $scriptPath + '/../../images/originals/' + $imageName
+$outputPath = $scriptPath + '/../../images/base64/' + $imageName + '.base64.txt'
 
 # convert image to base64
 $base64 = ConvertImageToBase64 $imagePath
