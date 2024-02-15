@@ -64,5 +64,5 @@ def test_process_image_multipart():
     assert img.width == BASE64_IMAGE_WIDTH
     assert img.height == BASE64_IMAGE_HEIGHT
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()
