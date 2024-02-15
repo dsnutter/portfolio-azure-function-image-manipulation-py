@@ -203,5 +203,5 @@ class TestFunctionApp(unittest.TestCase):
         assert str(response.get_body()).lower().find('"height": 60') >= 0
         assert str(response.get_body()).lower().find('"scale": 2') >= 0
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()
