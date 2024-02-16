@@ -9,3 +9,4 @@ test
 images
 powershell
 postman
+local.host_secrets.json
