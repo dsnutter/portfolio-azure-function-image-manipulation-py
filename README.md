@@ -31,7 +31,8 @@ Windows
 1. ctrl-shift-p
 2. Choose "Python: Create Environment"
 3. Choose create venv
-3. Use the existing python .venv from the .venv path created above
+4. Use the existing python .venv from the .venv path created above
+5. To run locally in vscode need Azurite Blob Service plugin running an instance of the test blob service
 
 Local Docker Install Automatic
 ==============================
