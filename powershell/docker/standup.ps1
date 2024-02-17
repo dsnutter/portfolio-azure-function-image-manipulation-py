@@ -21,3 +21,5 @@ $env:logfile = "current_$env:container_id.log"
 docker logs $env:container_id > $env:logfile
 
 Write-Output "Logfile for deploy is at $env:logfile"
+
+docker ps

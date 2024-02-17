@@ -42,6 +42,7 @@ def process_image(req, content_type='application/json'):
             raise ValueError("Header image format was not correct")
 
         img = Image.open(image_data)
+        img = rotate_to_original_orientation_exif(img)
 
         # figure out what type of image it is that was passed in, JPGE, PNG, etc. and track it
         type_images = next(filter(lambda x: img.format == x[1], IMAGE_TYPES_VALID.items()))
@@ -63,3 +64,21 @@ def process_image(req, content_type='application/json'):
         return img, type_request, type_image
 
     return return_error(msg, status), type_request, type_image
+
+def rotate_to_original_orientation_exif(img):
+    exif = img.getexif()
+
+    if len(exif) > 0 and 274 in exif:
+        orientation = exif[274]
+        format = img.format
+        logging.info(f"Orientation of image as per exif: {orientation}")
+        if orientation == 3:
+            img = img.transpose(method=Image.ROTATE_180)
+            img.format = format
+        elif orientation == 6:
+            img = img.transpose(method=Image.ROTATE_270)
+            img.format = format
+        elif orientation == 8:
+            img = img.transpose(method=Image.ROTATE_90)
+            img.format = format
+    return img
