@@ -36,10 +36,11 @@ Windows
 
 Local Docker Install Automatic
 ==============================
-1. cd powershell/docker
-2. ./standup.ps1 creates and runs the azure function docker container
-3. ./teardown.ps1 stops and destroys the azure function docker container
-4. After standing it up, you should be able to use the postman collections or powershell scripts to test
+1. Have Docker Desktop or other docker service running
+2. cd powershell/docker
+3. ./standup.ps1 creates and runs the azure function docker container
+4. ./teardown.ps1 stops and destroys the azure function docker container
+5. After standing it up, you should be able to use the postman collections or powershell scripts to test
 
 Local Docker Install Manual
 ===========================
@@ -55,3 +56,4 @@ Local Docker Install Manual
 7. Access running container via: "docker exec -it container_id_from_ps /bin/bash"
 8. To access logs use: "docker logs container_id_from_ps
 9. Please use docker/external-cloud-Dockerfile for external deploymenets if using docker as docker/local-Dockerfile docker file sets a static x-functions-key
+

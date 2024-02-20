@@ -16,10 +16,4 @@ $env:container_id = docker run -d -p $env:ports $env:tag
 Write-Output "Container ID: $env:container_id"
 Write-Output "Container Tag: $env:tag"
 
-$env:logfile = "current_$env:container_id.log"
-
-docker logs $env:container_id > $env:logfile
-
-Write-Output "Logfile for deploy is at $env:logfile"
-
 docker ps
