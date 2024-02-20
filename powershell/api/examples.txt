@@ -1,12 +1,14 @@
 cd powershell/api
 
-# get dimensions of entire folder of images via mulitpart
+# get dimensions of entire folder of images via mulitpart api
 .\get_dimensions_images.ps1 "http://localhost:8080/api/v1/dimensions" "../../images/originals" "multipart" 
 
-# get dimensions of entire folder of images via json
+# get dimensions of entire folder of images via json api
 .\get_dimensions_images.ps1 "http://localhost:8080/api/v1/dimensions" "../../images/originals" "json"
 
-.\scale_images.ps1 "http://localhost:8080/api/v1/scale" "../../images/originals" "multipart" 4
+# scale an entire folder of images to powershell/api/results folder via multipart 
+.\scale_images.ps1 "http://localhost:8080/api/v1/scale" "../../images/originals" "multipart" 2
 
+# scale an entire folder of images to powershell/api/results folder via multipart api
 .\scale_images.ps1 "http://localhost:8080/api/v1/scale" "../../images/originals" "json" 4
 
