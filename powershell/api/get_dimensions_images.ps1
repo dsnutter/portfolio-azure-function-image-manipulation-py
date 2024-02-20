@@ -3,20 +3,21 @@
 #
 
 # check for command line arguments
-if ($args.Length -lt 1) {
-    Write-Host "Usage: get_dimensions_image.ps1 <enpoint_url> <imageFolderPath> <contenttype>"
+if ($args.Length -lt 3) {
+    Write-Host "Usage: get_dimensions_image.ps1 <endpoint_url> <imageFolderPath> <contenttype>"
     Write-Host "Content types are: multipart or json"
     exit
 }
 
 # include functions
+. ./functions.ps1
 . ../utility/functions.ps1
 
 #
 # CONFIGURATION
 #
 # this is a sample key and is not used in the actual deployment
-$env:security_key = "abc123"
+$security_key = "abc123"
 
 # this is the local docker url of the api
 # $url = "http://localhost:8080/api/v1/dimensions"
@@ -39,21 +40,21 @@ if ($content_type -eq "multipart") {
     # process each image
     foreach ($imageFile in $imageFiles) {
         Write-Host ""
-        $width, $height = GetImageDimensions_ViaMultiPart $imageFile $url $env:security_key
+        $width, $height = GetImageDimensions_ViaMultiPart $imageFile $url $security_key
 
         # print response
         Write-Host "Dimensions are: Width: $width, Height: $height"
         Write-Host ""
     }
 }
+#
+# EXECUTE application/json
+#
 elseif ($content_type -eq "json") {
-    #
-    # EXECUTE application/json
-    #
     # process each image
     foreach ($imageFile in $imageFiles) {
         Write-Host ""
-        $width, $height = GetImageDimensions_ViaJson $imageFile $url $env:security_key
+        $width, $height = GetImageDimensions_ViaJson $imageFile $url $security_key
 
         # print response
         Write-Host "Dimensions are: Width: $width, Height: $height"
