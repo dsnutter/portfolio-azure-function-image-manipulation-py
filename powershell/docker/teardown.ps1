@@ -11,9 +11,9 @@ docker stop $env:container_id
 
 Write-Output "Removing container $env:container_id"
 
-docker rm $env:container_id
+docker rm --force $env:container_id
 
 # remove local image
 Write-Output "Removing local image $env:tag"
 
-docker rmi $env:tag
+docker rmi --force $env:tag
